@@ -1,4 +1,7 @@
-package lotto.domain;
+package lotto.domain.lotto;
+
+import lotto.domain.Prize;
+import lotto.domain.winningLotto.WinningLotto;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +28,22 @@ public class Lotto {
 
     public boolean contains(int number) {
         return numbers.contains(number);
+    }
+
+    public Prize calculatePrize(WinningLotto winningLotto) {
+        int containCount = 0;
+        boolean isBonus = false;
+
+        for (int number : numbers) {
+            if (winningLotto.contains(number)) {
+                containCount++;
+            }
+            if (winningLotto.matchesBonus(number)) {
+                isBonus = true;
+            }
+        }
+
+        return Prize.findPrize(containCount, isBonus);
     }
 
     private void validateSize(List<Integer> numbers) {

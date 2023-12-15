@@ -1,8 +1,9 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoMachine;
-import lotto.domain.PurchasePrice;
+import lotto.domain.ResultCalculator;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoMachine;
+import lotto.domain.lotto.PurchasePrice;
 import lotto.domain.winningLotto.BonusNumber;
 import lotto.domain.winningLotto.WinningLotto;
 import lotto.utils.Parser;
@@ -19,6 +20,10 @@ public class MainController {
         OutputView.printLottos(lottoMachine);
 
         WinningLotto winningLotto = getWinningLotto();
+
+        ResultCalculator resultCalculator = new ResultCalculator(lottoMachine, winningLotto);
+
+        OutputView.printResult(resultCalculator);
     }
 
     private PurchasePrice purchase() {

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,6 +13,8 @@ public class LottoMachine {
         this.price = price;
         generateLottos();
     }
+
+
 
     private void generateLottos() {
         int lottoCount = price.calculateLottoCount();

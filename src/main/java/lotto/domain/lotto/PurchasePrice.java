@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 public class PurchasePrice {
     private static final String NOT_NUMERIC_ERROR_MESSAGE = "[ERROR] 숫자가 아닌 값은 입력할 수 없습니다.";
