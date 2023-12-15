@@ -14,8 +14,6 @@ public class LottoMachine {
         generateLottos();
     }
 
-
-
     private void generateLottos() {
         int lottoCount = price.calculateLottoCount();
         for (int i = 0; i < lottoCount; i++) {

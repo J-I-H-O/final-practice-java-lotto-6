@@ -3,6 +3,7 @@ package lotto.domain.lotto;
 import lotto.domain.Prize;
 import lotto.domain.winningLotto.WinningLotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,14 +17,14 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        Collections.sort(numbers);
+    public Lotto(List<Integer> inputNumbers) {
+        validateSize(inputNumbers);
+        validateRange(inputNumbers);
+        validateDuplicate(inputNumbers);
 
-        validateSize(numbers);
-        validateRange(numbers);
-        validateDuplicate(numbers);
-
-        this.numbers = numbers;
+        List<Integer> copy = new ArrayList<>(inputNumbers);
+        Collections.sort(copy);
+        this.numbers = copy;
     }
 
     public boolean contains(int number) {

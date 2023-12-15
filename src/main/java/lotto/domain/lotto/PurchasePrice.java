@@ -40,4 +40,8 @@ public class PurchasePrice {
             throw new IllegalArgumentException(NOT_DIVISIBLE_ERROR_MESSAGE);
         }
     }
+
+    public int getMoney() {
+        return money;
+    }
 }

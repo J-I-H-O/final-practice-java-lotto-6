@@ -24,6 +24,7 @@ public class MainController {
         ResultCalculator resultCalculator = new ResultCalculator(lottoMachine, winningLotto);
 
         OutputView.printResult(resultCalculator);
+        OutputView.printBenefitRatio(resultCalculator, lottoMachine);
     }
 
     private PurchasePrice purchase() {
