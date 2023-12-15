@@ -4,6 +4,7 @@ import lotto.domain.Prize;
 import lotto.domain.ResultCalculator;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoMachine;
+import lotto.utils.Formatter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Map;
 public class OutputView {
     private static final String PRINT_LOTTOS_MESSAGE = "%d개를 구매했습니다.";
     private static final String PRINT_RESULT_MESSAGE = "당첨 통계\n---";
-    private static final String PRINT_RESULT_FORMAT = "%s (%d원) - %d개\n";
+    private static final String PRINT_RESULT_FORMAT = "%s (%s원) - %d개\n";
 
     public static void printLottos(LottoMachine lottoMachine) {
         System.out.println(String.format("\n" + PRINT_LOTTOS_MESSAGE,
@@ -30,7 +31,7 @@ public class OutputView {
                 .forEach(value -> {
                     System.out.printf(PRINT_RESULT_FORMAT,
                             value.getDescription(),
-                            value.getPrice(),
+                            Formatter.formatIntoWon(value.getPrice()),
                             resultCount.get(value)
                     );
                 });
