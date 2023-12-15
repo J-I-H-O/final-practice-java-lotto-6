@@ -17,6 +17,10 @@ public class PurchasePrice {
         this.money = money;
     }
 
+    public int calculateLottoCount() {
+        return money / PURCHASABLE_CURRENCY_UNIT;
+    }
+
     private void validateNumeric(String moneyInput) {
         try {
             Integer.parseInt(moneyInput);
