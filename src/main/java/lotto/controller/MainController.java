@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.PurchasePrice;
+import lotto.domain.winningLotto.BonusNumber;
 import lotto.domain.winningLotto.WinningLotto;
 import lotto.utils.Parser;
 import lotto.view.InputView;
@@ -17,17 +18,28 @@ public class MainController {
 
         OutputView.printLottos(lottoMachine);
 
-        Lotto winningNumbers = getWinningNumbers();
-
+        WinningLotto winningLotto = getWinningLotto();
     }
 
     private PurchasePrice purchase() {
         while (true) {
             try {
-                String inputPrice = InputView.inputPurchasePrice();
-                return new PurchasePrice(inputPrice);
+                String priceInput = InputView.inputPurchasePrice();
+                return new PurchasePrice(priceInput);
             } catch (IllegalArgumentException e) {
                 System.out.println("\n" + e.getMessage() + "\n");
+            }
+        }
+    }
+
+    private WinningLotto getWinningLotto() {
+        Lotto winningNumbers = getWinningNumbers();
+        while (true) {
+            BonusNumber bonusNumber = getBonusNumber();
+            try {
+                return new WinningLotto(winningNumbers, bonusNumber);
+            } catch (IllegalArgumentException e) {
+                System.out.println("\n" + e.getMessage());
             }
         }
     }
@@ -35,9 +47,20 @@ public class MainController {
     private Lotto getWinningNumbers() {
         while (true) {
             try {
-                String inputWinningNumbers = InputView.inputWinningNumbers();
-                List<Integer> numbers = Parser.parseNumbers(inputWinningNumbers);
+                String winningNumbersInput = InputView.inputWinningNumbers();
+                List<Integer> numbers = Parser.parseNumbers(winningNumbersInput);
                 return new Lotto(numbers);
+            } catch (IllegalArgumentException e) {
+                System.out.println("\n" + e.getMessage());
+            }
+        }
+    }
+
+    private BonusNumber getBonusNumber() {
+        while (true) {
+            try {
+                String bonusNumberInput = InputView.inputBonusNumber();
+                return new BonusNumber(bonusNumberInput);
             } catch (IllegalArgumentException e) {
                 System.out.println("\n" + e.getMessage());
             }
