@@ -22,4 +22,12 @@ public class LottoMachine {
             lottos.add(lotto);
         }
     }
+
+    public PurchasePrice getPrice() {
+        return price;
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
