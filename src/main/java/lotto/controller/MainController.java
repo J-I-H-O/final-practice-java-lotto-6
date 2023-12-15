@@ -39,7 +39,7 @@ public class MainController {
                 List<Integer> numbers = Parser.parseNumbers(inputWinningNumbers);
                 return new Lotto(numbers);
             } catch (IllegalArgumentException e) {
-                System.out.println("\n" + e.getMessage() + "\n");
+                System.out.println("\n" + e.getMessage());
             }
         }
     }
